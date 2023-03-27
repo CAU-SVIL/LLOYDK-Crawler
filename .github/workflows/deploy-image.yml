@@ -1,0 +1,39 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      
+    - name: Get File List
+      id: file_list
+      uses: actions/github-script@v4.3.0
+      with:
+        github-token: ${{ secrets.MY_GITHUB_TOKEN }}
+        script: |
+          const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            path: 'app'
+          });
+          return {
+            files: response.data.map((file) => file.name)
+          };
+          
+    - name: Build and Push Docker Images
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: |
+        for file in "${{ steps.file_list.outputs.files }}"; do
+          IMAGE_NAME="taeng0204/${file%.*}"
+          docker build -t $IMAGE_NAME --build-arg FILE_NAME=$file .
+          docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+          docker push $IMAGE_NAME
+        done
