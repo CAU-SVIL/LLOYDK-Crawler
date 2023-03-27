@@ -31,9 +31,8 @@ jobs:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
       run: |
-        file_names = ${{ steps.file_list.outputs.files }}
-        echo "file names: ${file_names}"
-        for file in ${file_list//[\[\],\']/}; do
+        echo "file names: ${{ steps.file_list.outputs.files }}" 
+        for file in ${${{ steps.file_list.outputs.files }}//[\[\],\']/}; do
           echo "current file: $file"
           IMAGE_NAME="***/${file%.*}"
           docker build -t $IMAGE_NAME --build-arg FILE_NAME=$file .
