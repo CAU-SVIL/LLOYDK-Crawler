@@ -25,6 +25,9 @@ jobs:
           return {
             files: response.data.map((file) => file.name)
           };
+    - name: Debug
+      run: |
+        echo "File List: ${steps.file_list.outputs.files}"
           
     - name: Build and Push Docker Images
       env:
@@ -32,8 +35,8 @@ jobs:
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       run: |
         for file in "${{ steps.file_list.outputs.files }}"; do
-          IMAGE_NAME="taeng0204/${file%.*}"
-          docker build -t $IMAGE_NAME --build-arg FILE_NAME=$file .
+          IMAGE_NAME="taeng0204/example"
+          docker build -t $IMAGE_NAME --build-arg FILE_NAME=example.py .
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
           docker push $IMAGE_NAME
         done
