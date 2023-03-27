@@ -25,9 +25,6 @@ jobs:
           return {
             files: response.data.map((file) => file.name)
           };
-    - name: Debug
-      run: |
-        echo "File List: ${steps.file_list.outputs.files}"
           
     - name: Build and Push Docker Images
       env:
