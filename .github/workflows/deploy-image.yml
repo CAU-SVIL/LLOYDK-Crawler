@@ -13,7 +13,7 @@ jobs:
       
     - name: Get File List
       id: file_list
-      uses: actions/github-script@v4.3.0
+      uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.MY_GITHUB_TOKEN }}
         script: |
