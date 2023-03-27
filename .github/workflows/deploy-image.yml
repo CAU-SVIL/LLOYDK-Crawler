@@ -24,9 +24,7 @@ jobs:
           });
           const fileNames = response.data.map((file) => file.name);
           console.log(fileNames);
-          return {
-            files: fileNames
-          };
+          core.setOutput("files", fileNames);
           
     - name: Build and Push Docker Images
       env:
