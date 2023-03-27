@@ -17,7 +17,7 @@ jobs:
       with:
         github-token: ${{ secrets.MY_GITHUB_TOKEN }}
         script: |
-          const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+          const response = await github.rest.repos.getContent({
             owner: context.repo.owner,
             repo: context.repo.repo,
             path: 'app'
