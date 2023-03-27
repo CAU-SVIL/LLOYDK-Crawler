@@ -35,7 +35,8 @@ jobs:
       run: |
         for file in "${{ steps.file_list.outputs.files }}[*]"; do
           IMAGE_NAME="taeng0204/${file%.*}"
-          docker build -t $IMAGE_NAME --build-arg FILE_NAME=$file .
+          docker build -t $IMAGE_NAME --build-arg FILE_NAME=${file} .
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
           docker push $IMAGE_NAME
         done
+
