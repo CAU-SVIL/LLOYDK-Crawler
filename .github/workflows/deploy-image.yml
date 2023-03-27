@@ -34,6 +34,7 @@ jobs:
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
       run: |
         for file in ${{ steps.file_list.outputs.files }}; do
+          echo $file
           IMAGE_NAME="***/${file%.*}"
           docker build -t $IMAGE_NAME --build-arg FILE_NAME=$file .
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
