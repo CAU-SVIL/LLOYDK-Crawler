@@ -22,7 +22,7 @@ jobs:
             repo: context.repo.repo,
             path: 'app'
           });
-          const fileNames = response.data.map((file) => file.name);
+          const fileNames = response.data.map((file) => file.name).join(",");
           console.log(fileNames);
           core.setOutput("files", fileNames);
           
@@ -32,11 +32,11 @@ jobs:
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
       run: |
         echo "file names: ${{ steps.file_list.outputs.files }}" 
-        for file in ${${{ steps.file_list.outputs.files }}//[ \[\]]/}; do
+        IFS=',' read -ra file_list <<< "${{ steps.file_list.outputs.files }}"
+        for file in "${file_list[@]}"; do
           echo "current file: $file"
-          IMAGE_NAME="***/${file%.*}"
+          IMAGE_NAME="taeng0204/${file%.*}"
           docker build -t $IMAGE_NAME --build-arg FILE_NAME=$file .
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
           docker push $IMAGE_NAME
         done
-        
