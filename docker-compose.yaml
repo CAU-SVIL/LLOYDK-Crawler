@@ -1,0 +1,29 @@
+services:
+  crawling_test:
+    image: taeng0204/example
+    container_name: crawling_test
+    depends_on:
+      - crawling_db
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.2
+    restart: always
+  crawling_db:
+    image: mongo
+    container_name: crawling_db
+    env_file:
+      - .env
+    volumes:
+      - ./volume/mongodb/data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.3
+    restart: always
+networks:
+  default_bridge:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/16
