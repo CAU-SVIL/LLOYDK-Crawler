@@ -8,6 +8,15 @@ services:
       default_bridge:
         ipv4_address: 172.19.0.2
     restart: always
+  melon_example_crawling:
+    image: taeng0204/melon_example
+    container_name: melon_example_crawling
+    depends_on:
+      - crawling_db
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.3
+    restart: always
   crawling_db:
     image: mongo
     container_name: crawling_db
