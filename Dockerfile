@@ -19,4 +19,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 COPY modules ./modules
 
+WORKDIR /usr/src/app
+
 CMD python3 ${FILE_NAME}
