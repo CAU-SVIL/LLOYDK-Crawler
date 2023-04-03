@@ -11,8 +11,6 @@ services:
   crawling_db:
     image: mongo
     container_name: crawling_db
-    env_file:
-      - .env
     volumes:
       - ./volume/mongodb/data:/data/db
     ports:
