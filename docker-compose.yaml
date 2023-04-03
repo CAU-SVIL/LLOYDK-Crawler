@@ -1,7 +1,9 @@
 services:
-  crawling_test:
-    image: taeng0204/example
-    container_name: crawling_test
+  example_crawling:
+    image: taeng0204/crawling
+    container_name: example_crawling
+    environment:
+      - FILE_NAME=example.py
     depends_on:
       - crawling_db
     networks:
@@ -9,8 +11,10 @@ services:
         ipv4_address: 172.19.0.3
     restart: always
   melon_example_crawling:
-    image: taeng0204/melon_example
+    image: taeng0204/crawling
     container_name: melon_example_crawling
+    environment:
+      - FILE_NAME=melon_example.py
     depends_on:
       - crawling_db
     networks:
