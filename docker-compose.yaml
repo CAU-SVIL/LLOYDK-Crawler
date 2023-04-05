@@ -1,26 +1,24 @@
 services:
-  example_crawling:
+  melon_boygroup_crawling:
     image: taeng0204/crawling
-    container_name: example_crawling
+    container_name: melon_boygroup_crawling
     environment:
-      - FILE_NAME=example.py
-    depends_on:
-      - crawling_db
-    networks:
-      default_bridge:
-        ipv4_address: 172.19.0.3
-    restart: always
-  melon_example_crawling:
-    image: taeng0204/crawling
-    container_name: melon_example_crawling
-    environment:
-      - FILE_NAME=melon_example.py
+      - FILE_NAME=melon_boy.py
     depends_on:
       - crawling_db
     networks:
       default_bridge:
         ipv4_address: 172.19.0.4
-    restart: always
+  melon_girlgroup_crawling:
+    image: taeng0204/crawling
+    container_name: melon_girlgroup_crawling
+    environment:
+      - FILE_NAME=melon_girl.py
+    depends_on:
+      - crawling_db
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.5
   crawling_db:
     image: mongo
     container_name: crawling_db
@@ -30,7 +28,7 @@ services:
       - 27017:27017
     networks:
       default_bridge:
-        ipv4_address: 172.19.0.2
+        ipv4_address: 172.19.0.3
     restart: always
 networks:
   default_bridge:
