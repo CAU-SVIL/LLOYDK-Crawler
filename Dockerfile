@@ -2,7 +2,7 @@ FROM python:3
 
 WORKDIR /usr/src
 
-ARG FILE_NAME
+ENV FILE_NAME main.py
 
 RUN apt-get -y update && \
     apt install wget && \
@@ -19,4 +19,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 COPY modules ./modules
 
-CMD [ "python3", FILE_NAME ]
+WORKDIR /usr/src/app
+
+CMD python3 ${FILE_NAME}
