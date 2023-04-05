@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "Dockerfile"
+      - "app"
+      - "modules"
     branches: [ main ]
 
 jobs:
