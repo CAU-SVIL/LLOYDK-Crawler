@@ -1,4 +1,3 @@
-
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from modules import crawling
@@ -6,8 +5,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
-from pymongo import MongoClient
 import re
 import time
 
@@ -28,20 +25,14 @@ def new_song_id(driver):
                 pass
             for i in elems: 
                 addresslist.append(i.get_attribute("href"))
-            try:
-                none= driver.find_element(By.CSS_SELECTOR,'#pageList > div > div > p')
-                break
-            except NoSuchElementException:
-                continue
+
         print(keyword)
     for i in addresslist:
-        new = re.sub(r"[^(""\d"")$]","",i)
         n = re.findall(r'\(([^)]+)',i)[1]
         id_list_tmp.append(n.strip("''"))
     return id_list_tmp 
 #긁어온 id를 query 안에 넣어서 곡, 아티스트, 앨범, 발매일, 장르, 마음수, 어제의 차트 긁기(숫자만)
 def id_query(driver, id_list):
-        tmp_list = []
         tmp_dict = []
         for sngid in id_list:
             id = sngid
@@ -82,7 +73,7 @@ def id_query(driver, id_list):
     
     
 # 크롤러 함수 작성
-def ex_crawling():
+def melon_boy():
 
   # 환경설정
     options = Options()
@@ -91,20 +82,17 @@ def ex_crawling():
     options.add_argument('lang=ko_KR')
     options.add_argument("--disable-dev-shm-usage")
 
-    s=Service('C:/Users/82104/Desktop/crawling/chromedriver_win32/chromedriver.exe')
+    s=Service('/usr/src/chrome/chromedriver')
     driver = webdriver.Chrome(options=options, service=s)
+
+  # 크롤링 코드 넣기
     id_list = new_song_id(driver)
     db_list = id_query(driver, id_list)
-    client = MongoClient("localhost", 27017)
-    db = client.dbsparta
-    print(list(db.users.find({})))
+
   # 드라이버 종료 후 리턴
     driver.quit()
     
     return db_list
 
 if __name__ == "__main__":
-  # 입력 시간 주기로 실행
-    crawling.start_crawling_hour("ex_crawling", ex_crawling, 1)
-  # 매일 입력 시각에 실행
-#crawling.start_crawling_day("ex_crawling", ex_crawling, "14:00")
+    crawling.start_crawling_day("melon_boy", melon_boy, "03:00")

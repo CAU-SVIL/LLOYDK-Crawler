@@ -27,13 +27,8 @@ def new_song_id(driver):
                 pass
             for i in elems: 
                 addresslist.append(i.get_attribute("href"))
-            try:
-                none= driver.find_element(By.CSS_SELECTOR,'#pageList > div > div > p')
-                break
-            except NoSuchElementException:
-                continue
+
     for i in addresslist:
-        new = re.sub(r"[^(""\d"")$]","",i)
         n = re.findall(r'\(([^)]+)',i)[1]
         id_list_tmp.append(n.strip("''"))
     print(keyword)
@@ -80,7 +75,7 @@ def id_query(driver, id_list):
     
     
 # 크롤러 함수 작성
-def ex_crawling():
+def melon_girl():
 
   # 환경설정
     options = Options()
@@ -89,20 +84,17 @@ def ex_crawling():
     options.add_argument('lang=ko_KR')
     options.add_argument("--disable-dev-shm-usage")
 
-    s=Service('C:/Users/82104/Desktop/crawling/chromedriver_win32/chromedriver.exe')
+    s=Service('/usr/src/chrome/chromedriver')
     driver = webdriver.Chrome(options=options, service=s)
+
+  # 크롤링 코드 넣기
     id_list = new_song_id(driver)
     db_list = id_query(driver, id_list)
+
   # 드라이버 종료 후 리턴
     driver.quit()
-
-    client = MongoClient("localhost", 27017)
-    db = client.dbsparta
-    print(list(db.users.find({})))
     
     return db_list
 
 if __name__ == "__main__":
-  # 입력 시간 주기로 실행
-    #print(ex_crawling())
-    crawling.start_crawling_hour("ex_crawling", ex_crawling, 1)
+    crawling.start_crawling_day("melon_girl", melon_girl, "05:00")
