@@ -19,6 +19,16 @@ services:
     networks:
       default_bridge:
         ipv4_address: 172.19.0.5
+  crawling_api:
+    image: taeng0204/api
+    container_name: crawling_api
+    ports:
+      - 80:80
+    depends_on:
+      - crawling_db
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.2
   crawling_db:
     image: mongo
     container_name: crawling_db
