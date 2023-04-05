@@ -8,6 +8,26 @@ services:
       default_bridge:
         ipv4_address: 172.19.0.2
     restart: always
+ melon_boygroup_crawling:
+    image: taeng0204/crawling
+    container_name: melon_boygroup_crawling
+    environment:
+      - FILE_NAME=melon_boy.py
+    depends_on:
+      - crawling_db
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.4
+   melon_girlgroup_crawling:
+    image: taeng0204/crawling
+    container_name: melon_girlgroup_crawling
+    environment:
+      - FILE_NAME=melon_girl.py
+    depends_on:
+      - crawling_db
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.5
   crawling_db:
     image: mongo
     container_name: crawling_db
