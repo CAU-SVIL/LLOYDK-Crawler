@@ -35,10 +35,12 @@ def new_song_id(driver):
 def id_query(driver, id_list):
         tmp_dict = []
         for sngid in id_list:
+            time.sleep(60)
             id = sngid
             query = 'https://www.melon.com/song/detail.htm?songId='+id
+            print(query)
             driver.get(query)
-            time.sleep(1.5)
+            time.sleep(60)
             try:
                 song = driver.find_element(By.CSS_SELECTOR, "#downloadfrm > div > div > div.entry > div.info > div.song_name").text
             except:
@@ -69,6 +71,7 @@ def id_query(driver, id_list):
             except:
                 chart_num = -1
             tmp_dict.append({'song':song,'artist':artist,'album':album,'release':release, 'genre':genre,'heart':heart,'chart_num':chart_num} )
+            print(tmp_dict)
         return tmp_dict
     
     
@@ -95,4 +98,6 @@ def melon_boy():
     return db_list
 
 if __name__ == "__main__":
-    crawling.start_crawling_day("melon_boy", melon_boy, "03:00")
+    # crawling.start_crawling_day("melon_boy", melon_boy, "03:00")
+    crawling.start_crawling_test("melon_boy", melon_boy)
+    
