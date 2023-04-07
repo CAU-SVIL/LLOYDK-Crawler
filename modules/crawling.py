@@ -33,3 +33,12 @@ def start_crawling_hour(name, func, hour):
 def start_crawling_test(name, func):
   time.sleep(5)
   save_data(name, func())
+
+
+# DB의 collection의 최신 데이터 조회
+def get_recent_data(name):
+  client = MongoClient("172.19.0.3", 27017)
+  db = client.crawling
+  collection = db[name]
+  data = collection.find()[0]["data"]
+  return data
