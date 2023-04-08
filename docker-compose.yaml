@@ -40,6 +40,14 @@ services:
       default_bridge:
         ipv4_address: 172.19.0.3
     restart: always
+  crawling_dashboard:
+    image: taeng0204/dashboard
+    container_name: crawling_dashboard
+    depends_on:
+      - crawling_api
+    networks:
+      default_bridge:
+        ipv4_address: 172.19.0.4
 networks:
   default_bridge:
     ipam:
