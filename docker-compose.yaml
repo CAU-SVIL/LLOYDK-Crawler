@@ -8,7 +8,7 @@ services:
       - crawling_db
     networks:
       default_bridge:
-        ipv4_address: 172.19.0.4
+        ipv4_address: 172.19.0.5
   melon_girlgroup_crawling:
     image: taeng0204/crawling
     container_name: melon_girlgroup_crawling
@@ -18,12 +18,12 @@ services:
       - crawling_db
     networks:
       default_bridge:
-        ipv4_address: 172.19.0.5
+        ipv4_address: 172.19.0.6
   crawling_api:
     image: taeng0204/api
     container_name: crawling_api
     ports:
-      - 80:80
+      - 8000:8000
     depends_on:
       - crawling_db
     networks:
@@ -43,6 +43,8 @@ services:
   crawling_dashboard:
     image: taeng0204/dashboard
     container_name: crawling_dashboard
+    ports:
+      - 80:80
     depends_on:
       - crawling_api
     networks:
