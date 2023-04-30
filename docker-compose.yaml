@@ -1,14 +1,39 @@
 services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: nginx:latest
+    volumes:
+      - ./volume/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 5116:80
+    depends_on:
+      - crawling_api
+      - crawling_dashboard
+  crawling_db:
+    image: mongo
+    container_name: crawling_db
+    volumes:
+      - ./volume/mongodb/data:/data/db
+    expose:
+      - 27017
+    restart: always
+  crawling_api:
+    image: taeng0204/go-api
+    container_name: crawling_api
+    expose:
+      - 8000
+    depends_on:
+      - crawling_db
+  crawling_dashboard:
+    image: taeng0204/dashboard
+    container_name: crawling_dashboard
+    expose:
+      - 8888
   melon_boygroup_crawling:
     image: taeng0204/crawling
     container_name: melon_boygroup_crawling
     environment:
       - FILE_NAME=melon_boy.py
-    depends_on:
-      - crawling_db
-    networks:
-      default_bridge:
-        ipv4_address: 172.19.0.4
   melon_girlgroup_crawling:
     image: taeng0204/crawling
     container_name: melon_girlgroup_crawling
@@ -16,33 +41,3 @@ services:
       - FILE_NAME=melon_girl.py
     depends_on:
       - crawling_db
-    networks:
-      default_bridge:
-        ipv4_address: 172.19.0.5
-  crawling_api:
-    image: taeng0204/api
-    container_name: crawling_api
-    ports:
-      - 80:80
-    depends_on:
-      - crawling_db
-    networks:
-      default_bridge:
-        ipv4_address: 172.19.0.2
-  crawling_db:
-    image: mongo
-    container_name: crawling_db
-    volumes:
-      - ./volume/mongodb/data:/data/db
-    ports:
-      - 27017:27017
-    networks:
-      default_bridge:
-        ipv4_address: 172.19.0.3
-    restart: always
-networks:
-  default_bridge:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.19.0.0/16
