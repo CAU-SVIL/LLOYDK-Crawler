@@ -96,5 +96,4 @@ def melon_boy():
     return db_list
 
 if __name__ == "__main__":
-    print(crawling.start_crawling_test("melon_boy",melon_boy))
-    #crawling.start_crawling_day("melon_boy", melon_boy, "01:00")
+    crawling.start_crawling_day("melon_boy", melon_boy, "01:00")
