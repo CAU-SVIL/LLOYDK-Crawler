@@ -34,10 +34,10 @@ services:
     container_name: melon_boygroup_crawling
     environment:
       - FILE_NAME=melon_boy.py
+      - TZ=Asia/Seoul
   melon_girlgroup_crawling:
     image: taeng0204/crawling
     container_name: melon_girlgroup_crawling
     environment:
       - FILE_NAME=melon_girl.py
-    depends_on:
-      - crawling_db
+      - TZ=Asia/Seoul
