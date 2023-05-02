@@ -41,5 +41,3 @@ services:
     environment:
       - FILE_NAME=melon_girl.py
       - TZ=Asia/Seoul
-    depends_on:
-      - crawling_db
