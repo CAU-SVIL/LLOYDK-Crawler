@@ -14,7 +14,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import re
 import time
-
+import requests
+import json
 
 def ytb_channel_data_func(driver):
     
@@ -200,7 +201,7 @@ def ytb_video_data_func(options, service, channel, video_urls):
     
     return(ytb_video_data)
 
-def youtube_crawling():
+def youtube():
 
   # 환경설정
     options = Options()
@@ -210,7 +211,7 @@ def youtube_crawling():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument('--kiosk')
 
-    service = Service(ChromeDriverManager().install())
+    service = Service("/usr/src/chrome/chromedriver")
     driver = webdriver.Chrome(options=options, service=service)
 
 #     data=ytb_channel_data_func(driver)
@@ -221,6 +222,7 @@ def youtube_crawling():
   # 드라이버 종료 후 리턴
     
 if __name__ == "__main__":
-    crawling.start_crawling_hour("youtube_crawling", youtube_crawling, 1)
+    # crawling.start_crawling_hour("youtube_crawling", youtube_crawling, 1)
+    crawling.start_crawling_test("youtube", youtube)
     #print(video_data)
 
