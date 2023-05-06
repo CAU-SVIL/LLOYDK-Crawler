@@ -7,11 +7,11 @@ services:
     expose:
       - 27017
     restart: always
-  example_crawling:
+  youtube_crawling:
     image: taeng0204/crawling
-    container_name: example_crawling
+    container_name: youtube_crawling
     environment:
-      - FILE_NAME=example.py
+      - FILE_NAME=youtube.py
       - TZ=Asia/Seoul
     volumes:
       - ./app:/usr/src/app
