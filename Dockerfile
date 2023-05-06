@@ -2,8 +2,6 @@ FROM python:3
 
 WORKDIR /usr/src
 
-ENV FILE_NAME main.py
-
 RUN apt-get -y update && \
     apt install wget && \
     apt install unzip
@@ -16,12 +14,8 @@ RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/` c
     mkdir chrome && \
     unzip /tmp/chromedriver.zip chromedriver -d /usr/src/chrome
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY app ./app
 COPY modules ./modules
+COPY init.sh ./init.sh
+RUN chmod +x ./init.sh
 
-WORKDIR /usr/src/app
-
-CMD python3 ${FILE_NAME}
+CMD /usr/src/init.sh

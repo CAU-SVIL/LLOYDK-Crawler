@@ -1,0 +1,18 @@
+services:
+  crawling_db:
+    image: mongo
+    container_name: crawling_db
+    volumes:
+      - ./volume/mongodb/data:/data/db
+    expose:
+      - 27017
+    restart: always
+  example_crawling:
+    image: taeng0204/crawling
+    container_name: example_crawling
+    environment:
+      - FILE_NAME=example.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt

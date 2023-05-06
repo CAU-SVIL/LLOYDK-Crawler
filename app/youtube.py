@@ -222,7 +222,5 @@ def youtube():
   # 드라이버 종료 후 리턴
     
 if __name__ == "__main__":
-    # crawling.start_crawling_hour("youtube_crawling", youtube_crawling, 1)
+    # crawling.start_crawling_hour("youtube", youtube, 1)
     crawling.start_crawling_test("youtube", youtube)
-    #print(video_data)
-
