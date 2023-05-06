@@ -8,12 +8,23 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from modules import crawling
+from selenium import webdriver#!/usr/bin/env python
+# coding: utf-8
+
+#전체 코드
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+from modules import crawling
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import re
 import time
+#추가라이브러리
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from bs4 import BeautifulSoup
 import requests
 import json
 
@@ -46,8 +57,8 @@ def ytb_channel_data_func(driver):
             print("에러 발생: ", e)
 
     api_key = "AIzaSyAbWnmuhCBOG5JQwUmfj8vUXrcgL6hoxH0" #api key 
-    #channel_name_list = ['겂도 없꾸라']
-    channel_name_list = ['BLACKPINK', 'BANGTANTV', 'NCT DREAM', 'SEVENTEEN', 'MAMAMOO', 'EXO', '이지금', 'aespa', 'TOMORROW X TOGETHER OFFICIAL']
+    channel_name_list = ['겂도 없꾸라']
+    #channel_name_list = ['BLACKPINK', 'BANGTANTV', 'NCT DREAM', 'SEVENTEEN', 'MAMAMOO', 'EXO', '이지금', 'aespa', 'TOMORROW X TOGETHER OFFICIAL']
     ytb_channel_data=[]
     
     for channel_name in channel_name_list:
