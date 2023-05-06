@@ -3,9 +3,7 @@ name: Build and Push Docker Images
 on:
   push:
     paths:
-      - ".github"
-      - "app"
-      - "modules"
+      - 'Dockerfile'
     branches: [ main ]
 
 jobs:

@@ -38,9 +38,9 @@ def start_crawling_test(name, func):
 
 
 # DB의 collection의 최신 데이터 조회
-def get_recent_data(name):
+def print_recent_data(name):
   client = MongoClient(BASE_URL, 27017)
   db = client.crawling
   collection = db[name]
   data = collection.find()[0]["data"]
-  return data
+  print(data)

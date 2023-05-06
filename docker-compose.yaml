@@ -31,13 +31,28 @@ services:
       - 8888
   melon_boygroup_crawling:
     image: taeng0204/crawling
-    container_name: melon_boygroup_crawling
+    container_name: melon_boygroup
     environment:
       - FILE_NAME=melon_boygroup.py
       - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt
   melon_girlgroup_crawling:
     image: taeng0204/crawling
-    container_name: melon_girlgroup_crawling
+    container_name: melon_girlgroup
     environment:
       - FILE_NAME=melon_girlgroup.py
       - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt
+  youtube_crawling:
+    image: taeng0204/crawling
+    container_name: youtube_crawling
+    environment:
+      - FILE_NAME=youtube.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt
