@@ -47,12 +47,39 @@ services:
     volumes:
       - ./app:/usr/src/app
       - ./requirements.txt:/usr/src/requirements.txt
-  youtube_crawling:
+  youtube_girl_light:
     image: taeng0204/crawling
-    container_name: youtube_crawling
+    container_name: youtube_girl_light
     environment:
-      - FILE_NAME=youtube.py
+      - FILE_NAME=youtube_girl_light.py
       - TZ=Asia/Seoul
     volumes:
       - ./app:/usr/src/app
-      - ./requirements.txt:/usr/src/requirements.txt
+      - ./requirements.txt:/usr/src/requirements.txt      
+  youtube_girl_heavy:
+    image: taeng0204/crawling
+    container_name: youtube_girl_heavy
+    environment:
+      - FILE_NAME=youtube_girl_heavy.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt      
+  youtube_boy_light:
+    image: taeng0204/crawling
+    container_name: youtube_boy_light
+    environment:
+      - FILE_NAME=youtube_boy_light.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt      
+  youtube_boy_heavy:
+    image: taeng0204/crawling
+    container_name: youtube_boy_heavy
+    environment:
+      - FILE_NAME=youtube_boy_heavy.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app:/usr/src/app
+      - ./requirements.txt:/usr/src/requirements.txt      
