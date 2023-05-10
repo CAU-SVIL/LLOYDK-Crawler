@@ -121,7 +121,7 @@ def ytb_channel_data_func(driver, channel_name_list):
     
     return(ytb_channel_data)
 
-def ytb_video_data_func(options, service, video_info):
+def ytb_video_data_func(options, service, video_info, ytb_video_data):
     
     ytb_video_data=[]
     ytb_video_data.append({'title': video_info['name'],'url': video_info['channel_url'], 'date': video_info['date'],
@@ -219,9 +219,9 @@ def ytb_video_data_func(options, service, video_info):
     print(str(round((end-start), 3)) + '소요시간')
     print(video_info['name']+'크롤링 종료')
     
-    return(ytb_video_data)
+#    return(ytb_video_data)
 
-def youtube_boy_heavy():
+def youtube_girl_heavy():
 
   # 환경설정
     options = Options()
@@ -236,15 +236,16 @@ def youtube_boy_heavy():
     
     #test
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
-        
-    #youtube_boy_heavy
-    channel_name_list =['BANGTANTV', 'Stray Kids', 'SEVENTEEN', 'TOMORROW X TOGETHER OFFICIAL', 'ENHYPEN']
     
+    
+    #youtube_girl_heavy
+    channel_name_list =['ITZY', 'BLACKPINK', 'TWICE', '(G)I-DLE (여자)아이들 (Official YouTube Channel)', 'Official fromis_9', 'loonatheworld']
+        
     videos_data=[]
     #data=ytb_channel_data_func(driver)
     channel_data=ytb_channel_data_func(driver, channel_name_list)
     for i in range(len(channel_data)):
-        videos_data.append(ytb_video_data_func(options, service ,channel_data[i]))
+        ytb_video_data_func(options, service ,channel_data[i], videos_data)
 
     return videos_data
   # 드라이버 종료 후 리턴
@@ -253,5 +254,5 @@ def youtube_boy_heavy():
 if __name__ == "__main__":
     # crawling.start_crawling_hour("youtube", youtube, 1)
     #crawling.start_crawling_test("youtube", youtube)
-    crawling.start_crawling_day("youtube_boy_heavy", youtube_boy_heavy, "01:00")
+    crawling.start_crawling_day("youtube_girl_heavy", youtube_girl_heavy, "01:00")
 
