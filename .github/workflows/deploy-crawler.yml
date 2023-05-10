@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    paths:
+      - 'app'
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+
+      - name: Git pull
+        run: |
+          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p 5115 "cd /home/crawler/Desktop/LLOYDK-Crawler/ && git pull"
+
+      - name: Docker Compose up
+        run: |
+          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p 5115 "cd /home/crawler/Desktop/LLOYDK-Crawler/ && docker compose up -d"

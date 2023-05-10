@@ -9,7 +9,7 @@
 
 #전체 코드
 import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 from modules import crawling
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -123,7 +123,6 @@ def ytb_channel_data_func(driver, channel_name_list):
 
 def ytb_video_data_func(options, service, video_info, ytb_video_data):
     
-    ytb_video_data=[]
     ytb_video_data.append({'title': video_info['name'],'url': video_info['channel_url'], 'date': video_info['date'],
                   'view': video_info['total_views'], 'comment': video_info['subscriber'], 'tag': video_info['video_counts']})
     driver=webdriver.Chrome(options=options, service=service)
@@ -219,9 +218,9 @@ def ytb_video_data_func(options, service, video_info, ytb_video_data):
     print(str(round((end-start), 3)) + '소요시간')
     print(video_info['name']+'크롤링 종료')
     
-#    return(ytb_video_data)
+    return(ytb_video_data)
 
-def youtube_boy_heavy():
+def youtube_girl_light():
 
   # 환경설정
     options = Options()
@@ -236,10 +235,10 @@ def youtube_boy_heavy():
     
     #test
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
-        
-    #youtube_boy_heavy
-    channel_name_list =['BANGTANTV', 'Stray Kids', 'SEVENTEEN', 'TOMORROW X TOGETHER OFFICIAL', 'ENHYPEN']
     
+    #youtub_girl_light
+    channel_name_list =['NewJeans', 'LE SSERAFIM ', 'NMIXX', 'IVE', 'aespa', 'Red Velvet', 'Kep1er', 'STAYC', '우주소녀 WJSN','FIFTY FIFTY Official']
+
     videos_data=[]
     #data=ytb_channel_data_func(driver)
     channel_data=ytb_channel_data_func(driver, channel_name_list)
@@ -252,6 +251,6 @@ def youtube_boy_heavy():
 
 if __name__ == "__main__":
     # crawling.start_crawling_hour("youtube", youtube, 1)
-    #crawling.start_crawling_test("youtube", youtube)
-    crawling.start_crawling_day("youtube_boy_heavy", youtube_boy_heavy, "01:00")
+    #crawling.start_crawling_test("youtube_girl_light", youtube_girl_light)
+    crawling.start_crawling_day("youtube_girl_light", youtube_girl_light, "01:00")
 
