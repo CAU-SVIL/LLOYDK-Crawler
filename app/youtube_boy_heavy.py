@@ -221,7 +221,7 @@ def ytb_video_data_func(options, service, video_info, ytb_video_data):
     
 #    return(ytb_video_data)
 
-def youtube_girl_heavy():
+def youtube_boy_heavy():
 
   # 환경설정
     options = Options()
@@ -236,11 +236,10 @@ def youtube_girl_heavy():
     
     #test
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
-    
-    
-    #youtube_girl_heavy
-    channel_name_list =['ITZY', 'BLACKPINK', 'TWICE', '(G)I-DLE (여자)아이들 (Official YouTube Channel)', 'Official fromis_9', 'loonatheworld']
         
+    #youtube_boy_heavy
+    channel_name_list =['BANGTANTV', 'Stray Kids', 'SEVENTEEN', 'TOMORROW X TOGETHER OFFICIAL', 'ENHYPEN']
+    
     videos_data=[]
     #data=ytb_channel_data_func(driver)
     channel_data=ytb_channel_data_func(driver, channel_name_list)
@@ -254,5 +253,5 @@ def youtube_girl_heavy():
 if __name__ == "__main__":
     # crawling.start_crawling_hour("youtube", youtube, 1)
     #crawling.start_crawling_test("youtube", youtube)
-    crawling.start_crawling_day("youtube_girl_heavy", youtube_girl_heavy, "01:00")
+    crawling.start_crawling_day("youtube_boy_heavy", youtube_boy_heavy, "01:00")
 
