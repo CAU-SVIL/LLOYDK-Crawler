@@ -121,9 +121,8 @@ def ytb_channel_data_func(driver, channel_name_list):
     
     return(ytb_channel_data)
 
-def ytb_video_data_func(options, service, video_info):
+def ytb_video_data_func(options, service, video_info, ytb_video_data):
     
-    ytb_video_data=[]
     ytb_video_data.append({'title': video_info['name'],'url': video_info['channel_url'], 'date': video_info['date'],
                   'view': video_info['total_views'], 'comment': video_info['subscriber'], 'tag': video_info['video_counts']})
     driver=webdriver.Chrome(options=options, service=service)
@@ -244,7 +243,7 @@ def youtube_girl_light():
     #data=ytb_channel_data_func(driver)
     channel_data=ytb_channel_data_func(driver, channel_name_list)
     for i in range(len(channel_data)):
-        videos_data.append(ytb_video_data_func(options, service ,channel_data[i]))
+        ytb_video_data_func(options, service ,channel_data[i], videos_data)
 
     return videos_data
   # 드라이버 종료 후 리턴
@@ -252,6 +251,6 @@ def youtube_girl_light():
 
 if __name__ == "__main__":
     # crawling.start_crawling_hour("youtube", youtube, 1)
-    #crawling.start_crawling_test("youtube", youtube)
+    #crawling.start_crawling_test("youtube_girl_light", youtube_girl_light)
     crawling.start_crawling_day("youtube_girl_light", youtube_girl_light, "01:00")
 
