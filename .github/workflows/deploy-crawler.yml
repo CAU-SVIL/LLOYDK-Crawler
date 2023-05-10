@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     paths:
-      - 'app/**.py'
+      - 'app'
     branches:
       - main
 
