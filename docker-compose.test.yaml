@@ -14,5 +14,5 @@ services:
       - FILE_NAME=example.py
       - TZ=Asia/Seoul
     volumes:
-      - ./app:/usr/src/app
-      - ./requirements.txt:/usr/src/requirements.txt
+      - ./app/example:/usr/src/app/example
+      

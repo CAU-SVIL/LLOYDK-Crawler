@@ -9,7 +9,7 @@
 
 #전체 코드
 import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 from modules import crawling
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -221,7 +221,7 @@ def ytb_video_data_func(options, service, video_info, ytb_video_data):
     
 #    return(ytb_video_data)
 
-def youtube_girl_heavy():
+def youtube_boy_light():
 
   # 환경설정
     options = Options()
@@ -236,11 +236,10 @@ def youtube_girl_heavy():
     
     #test
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
-    
-    
-    #youtube_girl_heavy
-    channel_name_list =['ITZY', 'BLACKPINK', 'TWICE', '(G)I-DLE (여자)아이들 (Official YouTube Channel)', 'Official fromis_9', 'loonatheworld']
-        
+
+    #youtube_boy_light
+    channel_name_list =['ZEROBASEONE', '백현 Baekhyun', 'NCT 127', 'NCT DREAM', 'TREASURE (트레저)', 'THE BOYZ', 'GOT7', 'MONSTA X', 'ASTRO 아스트로', 'ONEUS', 'SF9']
+
     videos_data=[]
     #data=ytb_channel_data_func(driver)
     channel_data=ytb_channel_data_func(driver, channel_name_list)
@@ -254,5 +253,5 @@ def youtube_girl_heavy():
 if __name__ == "__main__":
     # crawling.start_crawling_hour("youtube", youtube, 1)
     #crawling.start_crawling_test("youtube", youtube)
-    crawling.start_crawling_day("youtube_girl_heavy", youtube_girl_heavy, "01:00")
+    crawling.start_crawling_day("youtube_boy_light", youtube_boy_light, "01:00")
 
