@@ -77,3 +77,11 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - ./app/youtube_boy_heavy:/usr/src/app/youtube_boy_heavy 
+  twitter_artist_crawling:
+    image: taeng0204/crawling
+    container_name: twitter_artist_crawling
+    environment:
+      - FILE_NAME=twitter_artist.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app/twitter_artist:/usr/src/app/twitter_artist

@@ -92,12 +92,11 @@ def twitter_artist():
         fllwrs = -1
       answer.append({'artist':artist,'fllwrs':fllwrs})
       time.sleep(5)
-      print(artist, fllwrs)
 
   # 드라이버 종료 후 리턴
     driver.quit()
     return answer
 
 if __name__ == "__main__":
-   crawling.start_crawling_test("twitter_artist", twitter_artist)
-   crawling.print_recent_data("twitter_artist")
+   crawling.start_crawling_day("twitter_artist", twitter_artist, "13:00")
+   
