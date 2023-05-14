@@ -8,24 +8,21 @@ on:
       - main
 
 jobs:
-  deploy:
+  update:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Install SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-
-      - name: Git pull
-        run: |
-          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} "cd /home/crawler/Desktop/LLOYDK-Crawler/ && git pull"
-
-      - name: Docker Compose up
-        run: |
-          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} "cd /home/crawler/Desktop/LLOYDK-Crawler/ && docker compose up -d"
+    - name: ssh conection
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        host: ${{ secrets.HOST }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /home/${{ secrets.USERNAME }}/Desktop/LLOYDK-Crawler
+          git pull
+          docker-compose up -d
