@@ -85,3 +85,11 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - ./app/twitter_artist:/usr/src/app/twitter_artist
+  twitter_trend_crawling:
+    image: taeng0204/crawling
+    container_name: twitter_trend_crawling
+    environment:
+      - FILE_NAME=twitter_trend.py
+      - TZ=Asia/Seoul
+    volumes:
+      - ./app/twitter_trend:/usr/src/app/twitter_trend
