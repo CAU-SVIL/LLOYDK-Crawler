@@ -16,8 +16,7 @@ def twitter_trend():
     options.add_argument('lang=ko_KR')
     options.add_argument("--disable-dev-shm-usage")
     
-    s=Service('chromedriver.exe')
-    #s=Service('/usr/src/chrome/chromedriver')
+    s=Service('/usr/src/chrome/chromedriver')
     driver = webdriver.Chrome(options=options, service=s)
     answer = []
     
@@ -37,7 +36,5 @@ def twitter_trend():
     return answer
 
 if __name__ == "__main__":
-    crawling.start_crawling_test("twitter_trend", twitter_trend)
-    crawling.print_recent_data(twitter_trend)
-    #crawling.start_crawling_hour("twitter_trend",twitter_trend,1)
+    crawling.start_crawling_hour("twitter_trend",twitter_trend,1)
    
