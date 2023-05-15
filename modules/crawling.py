@@ -3,12 +3,12 @@ import schedule
 import time
 
 BASE_URL = "mongodb://crawling_db"
-
+PORT = 27000
 # DB와 통신 - 데이터이름, 저장 시간, 데이터
 def save_data(name, data):
   print("saving data...", time.strftime('%Y-%m-%d %H:%M:%S'))
   
-  client = MongoClient(BASE_URL, 27017)
+  client = MongoClient(BASE_URL, PORT)
   db = client.crawling
   collection = db[name]
 
@@ -31,16 +31,16 @@ def start_crawling_hour(name, func, hour):
     schedule.run_pending()
     time.sleep(1)
 
-# test용 즉각 크롤링
-def start_crawling_test(name, func):
-  time.sleep(5)
-  save_data(name, func())
-
-
 # DB의 collection의 최신 데이터 조회
 def print_recent_data(name):
-  client = MongoClient(BASE_URL, 27017)
+  client = MongoClient(BASE_URL, PORT)
   db = client.crawling
   collection = db[name]
   data = collection.find()[0]["data"]
   print(data)
+
+# test용 즉각 크롤링
+def start_crawling_test(name, func):
+  time.sleep(3)
+  save_data(name, func())
+  print_recent_data(name)
