@@ -25,4 +25,4 @@ jobs:
         script: |
           cd /home/${{ secrets.USERNAME }}/Desktop/LLOYDK-Crawler
           git pull
-          docker-compose up -d
+          docker compose up -d
