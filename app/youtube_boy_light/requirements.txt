@@ -9,6 +9,7 @@ dnspython==2.3.0
 exceptiongroup==1.1.1
 h11==0.14.0
 idna==3.4
+lxml==4.9.2
 outcome==1.2.0
 pymongo==4.3.3
 PySocks==1.7.1
