@@ -3,7 +3,7 @@ import schedule
 import time
 
 BASE_URL = "mongodb://crawling_db"
-PORT = 27000
+PORT = 27017
 # DB와 통신 - 데이터이름, 저장 시간, 데이터
 def save_data(name, data):
   print("saving data...", time.strftime('%Y-%m-%d %H:%M:%S'))
