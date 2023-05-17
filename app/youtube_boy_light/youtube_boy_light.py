@@ -122,8 +122,7 @@ def ytb_channel_data_func(driver, channel_name_list):
     return(ytb_channel_data)
 
 def ytb_video_data_func(options, service, video_info, ytb_video_data):
-    
-    ytb_video_data=[]
+   
     ytb_video_data.append({'title': video_info['name'],'url': video_info['channel_url'], 'date': video_info['date'],
                   'view': video_info['total_views'], 'comment': video_info['subscriber'], 'tag': video_info['video_counts']})
     driver=webdriver.Chrome(options=options, service=service)
