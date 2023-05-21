@@ -242,7 +242,4 @@ def youtube_girl_heavy():
 
 
 if __name__ == "__main__":
-    # crawling.start_crawling_hour("youtube", youtube, 1)
-    #crawling.start_crawling_test("youtube", youtube)
     crawling.start_crawling_day("youtube_girl_heavy", youtube_girl_heavy, "01:00")
-
