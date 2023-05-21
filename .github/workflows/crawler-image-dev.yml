@@ -26,13 +26,17 @@ jobs:
       - name: Read modified folder names
         id: read_changes
         run: |
-          echo "Modified folders: ${{ steps.list_changes.outputs.folders }}" >> ${{ github.workspace }}/modified_folders.txt
+          echo "Modified folders: ${{ steps.list_changes.outputs.folders }}"
+          echo "${{ steps.list_changes.outputs.folders }}" >> ${{ github.workspace }}/modified_folders.txt
+
+      - name: Print modified folder names
+        run: cat ${{ github.workspace }}/modified_folders.txt
 
       - name: Build Docker images
         id: build_images
         run: |
-          IFS=' ' read -ra FOLDERS <<< ${{ steps.list_changes.outputs.folders }}
+          FOLDERS=(${{ steps.list_changes.outputs.folders }})
           for folder in "${FOLDERS[@]}"; do
             echo "Building Docker image for folder: $folder"
-            docker build -t mydockerregistry/myimage:$folder ./app/$folder
+            docker build --build-arg NAME=$folder -t taeng0204/$folder -f Dockerfile.crawler .
           done
