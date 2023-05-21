@@ -16,16 +16,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: List modified folders
+      - name: List modified files
         id: list_changes
         run: |
-          git diff --name-only HEAD^ HEAD | awk -F'/' '{print $2}' | uniq
-          echo "::set-output name=folders::$(cat ${{ github.workspace }}/modified_folders.txt)"
+          git diff --name-only HEAD^ HEAD
+          echo "::set-output name=changes::$(git diff --name-only HEAD^ HEAD)"
 
-      - name: Read modified folder names
-        id: read_changes
+      - name: Extract modified folders
+        id: extract_folders
         run: |
-          echo "Modified folders: ${{ steps.list_changes.outputs.folders }}" >> ${{ github.workspace }}/modified_folders.txt
+          echo "${{ steps.list_changes.outputs.changes }}" | awk -F'/' '{print $2}' | uniq | tee ${{ github.workspace }}/modified_folders.txt
 
-      - name: Print modified folder names
+      - name: Print modified folders
         run: cat ${{ github.workspace }}/modified_folders.txt
+
+      - name: Print modified files
+        run: echo "${{ steps.list_changes.outputs.changes }}"
