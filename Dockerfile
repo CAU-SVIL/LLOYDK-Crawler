@@ -11,8 +11,6 @@ RUN apt-get -y update && \
     mkdir chrome && \
     unzip /tmp/chromedriver.zip chromedriver -d /usr/src/chrome
 
-COPY modules ./modules
-COPY init.sh ./init.sh
-RUN chmod +x ./init.sh
+ENV TZ=Asia/Seoul \ PYTHONUNBUFFERED=1
 
-CMD /usr/src/init.sh
+COPY modules ./modules

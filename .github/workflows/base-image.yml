@@ -1,0 +1,25 @@
+name: Build and Push Base Crawler Images
+
+on:
+  push:
+    paths:
+      - 'Dockerfile'
+      - 'modules/**'
+    branches: [ main ]
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      
+    - name: Build and Push Docker Images
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+      run: |
+        IMAGE_NAME="taeng0204/crawling"
+        docker build -t $IMAGE_NAME .
+        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+        docker push $IMAGE_NAME
