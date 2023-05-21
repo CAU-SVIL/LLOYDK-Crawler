@@ -12,7 +12,7 @@ import time
 def new_song_id(driver):
     addresslist=[]
     songid_list=[]
-    keyword_list = ["뉴진스","르세라핌", "엔믹스","아이브","있지","에스파","블랙핑크","트와이스","아이들","레드벨벳","케플러","스테이씨","프로미스나인","이달의소녀","우주소녀"]
+    keyword_list = ["뉴진스","르세라핌", "엔믹스","아이브","있지","에스파","블랙핑크","트와이스","아이들","레드벨벳","케플러","스테이씨","프로미스나인","이달의소녀","우주소녀","마마무", "드림캐쳐", "Weeekly", "Billlie", "VIVIZ", "오마이걸", "브레이브걸스", "퍼플키스", "woo!ah!", "CLASS:y", "로켓펀치"]
     for keyword in keyword_list:
         for page in range(1,6):
             driver.get("https://www.melon.com/search/song/index.htm?q="+keyword+"&section=artist&searchGnbYn=Y&kkoSpl=Y&kkoDpType=#params%5Bq%5D="+keyword+"&params%5Bsort%5D=hit&params%5Bsection%5D=artist&params%5BsectionId%5D=&params%5BgenreDir%5D=GN2501&&po=pageObj&startIndex="+str((50 * (page - 1) + 1))) 
