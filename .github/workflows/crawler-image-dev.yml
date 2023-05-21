@@ -5,6 +5,7 @@ on:
     paths:
       - 'Dockerfile.crawler'
       - 'app/**'
+      - '.github/workflows/crawler-image-dev.yml'
     branches: [ dev ]
 
 jobs:
