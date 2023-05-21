@@ -204,12 +204,10 @@ def ytb_video_data_func(options, service, video_info, ytb_video_data):
 
     driver.quit()
     
-    ##############################################
     end = time.time()
     print(str(round((end-start), 3)) + '소요시간')
     print(video_info['name']+'크롤링 종료')
-    
-#    return(ytb_video_data)
+
 
 def youtube_girl_heavy():
 
