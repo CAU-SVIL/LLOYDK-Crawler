@@ -19,8 +19,8 @@ jobs:
       - name: List modified files
         id: list_changes
         run: |
-          git diff --name-only HEAD^ HEAD
-          echo "::set-output name=changes::$(git diff --name-only HEAD^ HEAD)"
+          git diff --name-only HEAD~1 HEAD
+          echo "::set-output name=changes::$(git diff --name-only HEAD~1 HEAD)"
 
       - name: Extract modified folders
         id: extract_folders
