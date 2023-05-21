@@ -229,7 +229,7 @@ def youtube_girl_heavy():
     
     
     #youtube_girl_heavy
-    channel_name_list =['ITZY', 'BLACKPINK', 'TWICE', '(G)I-DLE (여자)아이들 (Official YouTube Channel)', 'Official fromis_9', 'loonatheworld', "MAMAMOO", "Dreamcatcher official", "PURPLE KISS"]
+    channel_name_list =['ITZY', 'BLACKPINK', 'TWICE', '(G)I-DLE (여자)아이들 (Official YouTube Channel)', 'Official fromis_9', 'loonatheworld', "MAMAMOO"]
         
     videos_data=[]
     #data=ytb_channel_data_func(driver)
