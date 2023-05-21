@@ -238,7 +238,7 @@ def youtube_boy_heavy():
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
         
     #youtube_boy_heavy
-    channel_name_list =['BANGTANTV', 'Stray Kids', 'SEVENTEEN', 'TOMORROW X TOGETHER OFFICIAL', 'ENHYPEN']
+    channel_name_list =['BANGTANTV', 'Stray Kids', 'SEVENTEEN', 'TOMORROW X TOGETHER OFFICIAL', 'ENHYPEN',"CRAVITY", "BTOB 비투비 (Official YouTube Channel)", "WEi", "DKZ"]
     
     videos_data=[]
     #data=ytb_channel_data_func(driver)

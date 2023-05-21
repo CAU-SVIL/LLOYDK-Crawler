@@ -237,7 +237,7 @@ def youtube_girl_light():
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
     
     #youtub_girl_light
-    channel_name_list =['NewJeans', 'LE SSERAFIM ', 'NMIXX', 'IVE', 'aespa', 'Red Velvet', 'Kep1er', 'STAYC', '우주소녀 WJSN','FIFTY FIFTY Official']
+    channel_name_list =['NewJeans', 'LE SSERAFIM ', 'NMIXX', 'IVE', 'aespa', 'Red Velvet', 'Kep1er', 'STAYC', '우주소녀 WJSN','FIFTY FIFTY Official',"Weeekly 위클리", "Billlie", "VIVIZ", "OH MY GIRL", "Brave Girls 브레이브걸스", "woo!ah! 우아", "CLASS:y(클라씨)", "Rocket Punch - 로켓펀치"]
 
     videos_data=[]
     #data=ytb_channel_data_func(driver)
