@@ -224,10 +224,6 @@ def youtube_girl_heavy():
     service = Service("/usr/src/chrome/chromedriver")
     driver = webdriver.Chrome(options=options, service=service)
     
-    #test
-    #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
-    
-    
     #youtube_girl_heavy
     channel_name_list =['ITZY', 'BLACKPINK', 'TWICE', '(G)I-DLE (여자)아이들 (Official YouTube Channel)', 'Official fromis_9', 'loonatheworld', "MAMAMOO", "Dreamcatcher official", "PURPLE KISS"]
         
@@ -238,7 +234,6 @@ def youtube_girl_heavy():
         ytb_video_data_func(options, service ,channel_data[i], videos_data)
 
     return videos_data
-  # 드라이버 종료 후 리턴
 
 
 if __name__ == "__main__":
