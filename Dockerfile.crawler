@@ -1,0 +1,15 @@
+FROM taeng0204/crawling
+
+WORKDIR /usr/src
+
+ARG NAME
+
+ENV FILE="${NAME}.py"
+
+COPY app/${NAME} app/${NAME}
+
+WORKDIR /usr/src/app/${NAME}
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD python3 ${FILE}

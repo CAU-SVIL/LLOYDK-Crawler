@@ -1,10 +1,11 @@
-name: Build and Push Docker Images
+name: Build and Push Base Crawler Images
 
 on:
   push:
     paths:
       - 'Dockerfile'
-    branches: [ main ]
+      - 'modules/**'
+    branches: [ dev ]
 
 jobs:
   build_and_push:
@@ -18,7 +19,7 @@ jobs:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
       run: |
-        IMAGE_NAME="taeng0204/crawling"
+        IMAGE_NAME="taeng0204/crawling:dev"
         docker build -t $IMAGE_NAME .
         docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
         docker push $IMAGE_NAME

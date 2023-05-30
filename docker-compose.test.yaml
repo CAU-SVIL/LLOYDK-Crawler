@@ -7,12 +7,8 @@ services:
     expose:
       - 27017
     restart: always
-  example_crawling:
-    image: taeng0204/crawling
-    container_name: example_crawling
-    environment:
-      - FILE_NAME=example.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/example:/usr/src/app/example
+  crawling-exmaple:
+    image: taeng0204/crawling-example
+    container_name: crawling-exmaple
+
       

@@ -1,0 +1,39 @@
+name: Build and Push Crawler Images
+
+on:
+  push:
+    paths:
+      - 'Dockerfile.crawler'
+      - 'app/**'
+    branches: [ main ]
+
+jobs:
+  check_file_changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: List modified folders
+        id: list_changes
+        run: |
+          git diff --name-only HEAD^ HEAD | awk -F'/' '{print $2}' | uniq
+          echo "::set-output name=folders::$(cat ${{ github.workspace }}/modified_folders.txt)"
+
+      - name: Read modified folder names
+        id: read_changes
+        run: |
+          echo "Modified folders: ${{ steps.list_changes.outputs.folders }}"
+          echo "${{ steps.list_changes.outputs.folders }}" >> ${{ github.workspace }}/modified_folders.txt
+
+      - name: Build Docker images
+        id: build_images
+        run: |
+          FOLDERS=(${{ steps.list_changes.outputs.folders }})
+          for folder in "${FOLDERS[@]}"; do
+            echo "Building Docker image for folder: $folder"
+            docker build --build-arg NAME=$folder -t taeng0204/$folder -f Dockerfile.crawler .
+          done

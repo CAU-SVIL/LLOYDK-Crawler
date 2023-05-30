@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-#!/usr/bin/env python
-# coding: utf-8
-
-#전체 코드
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))))
 from modules import crawling
@@ -237,7 +227,7 @@ def youtube_boy_light():
     #channel_name_list = ['겂도 없꾸라', 'FIFTY FIFTY Official']
 
     #youtube_boy_light
-    channel_name_list =['ZEROBASEONE', '백현 Baekhyun', 'NCT 127', 'NCT DREAM', 'TREASURE (트레저)', 'THE BOYZ', 'GOT7', 'MONSTA X', 'ASTRO 아스트로', 'ONEUS', 'SF9']
+    channel_name_list =['ZEROBASEONE', '백현 Baekhyun', 'NCT 127', 'NCT DREAM', 'TREASURE (트레저)', 'THE BOYZ', 'GOT7', 'MONSTA X', 'ASTRO 아스트로', 'ONEUS', 'SF9',"SUPER JUNIOR", "VERIVERY", "P1Harmony", "TEMPEST", "OMEGA X", "WINNER"]
 
     videos_data=[]
     #data=ytb_channel_data_func(driver)

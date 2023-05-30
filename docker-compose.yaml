@@ -14,8 +14,8 @@ services:
     container_name: crawling_db
     volumes:
       - ./volume/mongodb/data:/data/db
-    expose:
-      - 27017
+    ports:
+      - 27000:27017
     restart: always
   crawling_api:
     image: taeng0204/go-api
@@ -29,67 +29,30 @@ services:
     container_name: crawling_dashboard
     expose:
       - 8888
-  melon_boy_crawling:
-    image: taeng0204/crawling
+  melon_boy:
+    image: taeng0204/melon_boy
     container_name: melon_boy
-    environment:
-      - FILE_NAME=melon_boy.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/melon_boy:/usr/src/app/melon_boy
-  melon_girl_crawling:
-    image: taeng0204/crawling
+  melon_girl:
+    image: taeng0204/melon_girl
     container_name: melon_girl
-    environment:
-      - FILE_NAME=melon_girl.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/melon_girl:/usr/src/app/melon_girl
   youtube_girl_light:
-    image: taeng0204/crawling
-    container_name: youtube_girl_light
-    environment:
-      - FILE_NAME=youtube_girl_light.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/youtube_girl_light:/usr/src/app/youtube_girl_light    
+    image: taeng0204/youtube_girl_light
+    container_name: youtube_girl_light  
   youtube_girl_heavy:
-    image: taeng0204/crawling
-    container_name: youtube_girl_heavy
-    environment:
-      - FILE_NAME=youtube_girl_heavy.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/youtube_girl_heavy:/usr/src/app/youtube_girl_heavy   
+    image: taeng0204/youtube_girl_heavy
+    container_name: youtube_girl_heavy  
   youtube_boy_light:
-    image: taeng0204/crawling
+    image: taeng0204/youtube_boy_light
     container_name: youtube_boy_light
-    environment:
-      - FILE_NAME=youtube_boy_light.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/youtube_boy_light:/usr/src/app/youtube_boy_light   
   youtube_boy_heavy:
-    image: taeng0204/crawling
+    image: taeng0204/youtube_boy_heavy
     container_name: youtube_boy_heavy
-    environment:
-      - FILE_NAME=youtube_boy_heavy.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/youtube_boy_heavy:/usr/src/app/youtube_boy_heavy 
-  twitter_artist_crawling:
-    image: taeng0204/crawling
-    container_name: twitter_artist_crawling
-    environment:
-      - FILE_NAME=twitter_artist.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/twitter_artist:/usr/src/app/twitter_artist
-  twitter_trend_crawling:
-    image: taeng0204/crawling
-    container_name: twitter_trend_crawling
-    environment:
-      - FILE_NAME=twitter_trend.py
-      - TZ=Asia/Seoul
-    volumes:
-      - ./app/twitter_trend:/usr/src/app/twitter_trend
+  twitter_artist:
+    image: taeng0204/twitter_artist
+    container_name: twitter_artist
+  twitter_trend:
+    image: taeng0204/twitter_trend
+    container_name: twitter_trend
+  hanteochart_daily:
+    image: taeng0204/hanteochart_daily
+    container_name: hanteochart_daily
