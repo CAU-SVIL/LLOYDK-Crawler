@@ -29,26 +29,30 @@ services:
     container_name: crawling_dashboard
     expose:
       - 8888
-  melon_boy_crawling:
-    image: taeng0204/crawling
+  melon_boy:
+    image: taeng0204/melon_boy
     container_name: melon_boy
-  melon_girl_crawling:
-    image: taeng0204/crawling
+  melon_girl:
+    image: taeng0204/melon_girl
+    container_name: melon_girl
   youtube_girl_light:
-    image: taeng0204/crawling
+    image: taeng0204/youtube_girl_light
     container_name: youtube_girl_light  
   youtube_girl_heavy:
-    image: taeng0204/crawling
+    image: taeng0204/youtube_girl_heavy
     container_name: youtube_girl_heavy  
   youtube_boy_light:
-    image: taeng0204/crawling
+    image: taeng0204/youtube_boy_light
     container_name: youtube_boy_light
   youtube_boy_heavy:
-    image: taeng0204/crawling
+    image: taeng0204/youtube_boy_heavy
     container_name: youtube_boy_heavy
   twitter_artist:
-    image: taeng0204/crawling
+    image: taeng0204/twitter_artist
     container_name: twitter_artist
   twitter_trend:
-    image: taeng0204/crawling
+    image: taeng0204/twitter_trend
     container_name: twitter_trend
+  hanteochart_daily:
+    image: taeng0204/hanteochart_daily
+    container_name: hanteochart_daily
