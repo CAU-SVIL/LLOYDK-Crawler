@@ -82,12 +82,12 @@ def postype_view():
       driver.get(query)
       time.sleep(5)
       try:
-        view = driver.find_element(By.XPATH,'//*[@id="main-content"]/div/div[2]/div[1]/header/div/div').text
-        view = re.sub(r'[^0-9]', '', view)
+        count = driver.find_element(By.XPATH,'//*[@id="main-content"]/div/div[2]/div[1]/header/div/div').text
+        count = re.sub(r'[^0-9]', '', count)
       except:
-        view = -1
-      print(view)
-      answer.append({'artist':artist,'view':view})
+        count = -1
+      print(count)
+      answer.append({'artist':artist,'count':count})
       time.sleep(5)
 
   # 드라이버 종료 후 리턴
