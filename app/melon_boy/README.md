@@ -13,8 +13,13 @@
 {'song':song,'artist':artist,'album':album,'release':release, 'genre':genre,'heart':heart,'chart_num':chart_num}
 
 song: string 형으로 멜론 곡 명 출력
+
 artist: string 형으로 수집 아이돌 앨범 타이틀 곡 명 출력
+
 album: string 형으로 수집 아이돌의 앨범 명 출력
+
 genre: string 형으로 수집 아이돌의 곡 장르 출력
+
 heart: string 형으로 멜론 곡 하트 수 출력
+
 chart_num: string 형으로 멜론 곡 전날 일간 차트 순위 출력, ( 일간차트가 1000위까지만 나타나므로 차트 밖으로 나간 경우 -1)
