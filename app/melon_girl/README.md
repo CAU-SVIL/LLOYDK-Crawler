@@ -7,7 +7,7 @@
  마마무, 드림캐쳐, Weeekly, Billlie, VIVIZ, 오마이걸, 브레이브걸스, 퍼플키스, woo!ah!, CLASS:y, 로켓펀치
 
 #### 크롤링 주기
-매일 오전 05:00 마다 멜론 남자아이돌 크롤링 진행
+매일 오전 05:00 마다 멜론 여자아이돌 크롤링 진행
 
 #### 크롤링 결과
 {'song':song,'artist':artist,'album':album,'release':release, 'genre':genre,'heart':heart,'chart_num':chart_num}
